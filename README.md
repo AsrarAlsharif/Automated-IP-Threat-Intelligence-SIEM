@@ -33,3 +33,28 @@ The solution automatically:
 - Sends enriched threat intelligence back to IBM QRadar.
 - Automatically triggers a QRadar offense for High-Risk IP addresses.
 - Generates analytical PDF reports for High-Risk and Medium-Risk cases to support security analysts during investigation.
+---
+
+## 🏗️ System Architecture
+
+The solution uses an automated threat intelligence pipeline to analyze suspicious IP addresses and enrich security events before they are processed by IBM QRadar.
+
+```mermaid
+flowchart TD
+    A["Windows / Log Source"] -->|"Syslog - UDP 5514"| B["Python Processing Service"]
+    B --> C["Extract IP Address"]
+    C --> D["AbuseIPDB API"]
+    D --> E["Retrieve Reputation Data<br/>Score • Country • Last Reported"]
+    E --> F{"Risk Classification"}
+
+    F -->|"High Risk ≥ 75"| G["IBM QRadar SIEM"]
+    F -->|"Medium Risk 20–74"| G
+    F -->|"Low Risk < 20"| G
+
+    G --> H["Custom DSM<br/>Parse Security Fields"]
+    H --> I["QRadar Log Activity"]
+    H --> J["Custom Correlation Rule"]
+
+    J -->|"High Risk"| K["Security Offense"]
+    F -->|"High / Medium"| L["Automated PDF Threat Report"]
+```
