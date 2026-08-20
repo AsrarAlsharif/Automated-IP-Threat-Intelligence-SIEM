@@ -134,3 +134,19 @@ The IP address `209.85.216.66` received a confidence score of **52%** and was cl
 The IP address `142.4.9.200` received a confidence score of **18%** and was classified as **Low-Risk**. The event was recorded in QRadar Log Activity without triggering a security offense.
 
 ![Low-Risk IP Detection](screenshots/qradar-low-risk-detection.png)
+
+---
+
+## 📊 Results & Impact
+
+The implemented solution successfully demonstrated an automated workflow for IP threat intelligence analysis and SIEM-based threat detection.
+
+### Key Outcomes
+
+- **Automated IP reputation analysis** using the AbuseIPDB API.
+- **Three-level risk classification** into High-Risk, Medium-Risk, and Low-Risk categories.
+- **Automatic enrichment of QRadar events** with threat intelligence data.
+- **Automatic security offense generation** for High-Risk IP addresses.
+- **Automated PDF threat reports** for High-Risk and Medium-Risk cases.
+- **Reduced reliance on manual IP investigation** by security analysts.
+- **Real-time escalation of critical threats** through QRadar correlation rules.
