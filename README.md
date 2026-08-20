@@ -105,3 +105,32 @@ flowchart TD
 | **Networking** | UDP, Syslog Listener (Port 5514), QRadar Syslog Ingestion (Port 514) |
 | **Threat Analysis** | Risk Classification, Threat Enrichment, IP-Based Threat Detection |
 | **Reporting** | Automated PDF Threat Reports, Risk-Based Recommendations |
+---
+
+## 📸 Detection Results & Screenshots
+
+The following screenshots demonstrate how the automated workflow classifies suspicious IP addresses and processes the results inside IBM QRadar.
+
+### 🔴 High-Risk IP Detection
+
+The system identified the IP address `185.204.1.182` with an AbuseIPDB confidence score of **86%** and classified it as **High-Risk**. A threat report was automatically generated and its path was included in the QRadar event.
+
+![High-Risk IP Detection](screenshots/qradar-high-risk-detection.png)
+
+### 🚨 Automated Security Offense
+
+When a High-Risk classification is received, the custom QRadar correlation rule automatically triggers a security offense. This enables critical threats to be escalated without requiring manual analyst intervention.
+
+![QRadar High-Risk Offense](screenshots/qradar-high-risk-offense.png)
+
+### 🟠 Medium-Risk IP Detection
+
+The IP address `209.85.216.66` received a confidence score of **52%** and was classified as **Medium-Risk**. The event was logged in QRadar and an analytical PDF threat report was generated for further investigation.
+
+![Medium-Risk IP Detection](screenshots/qradar-medium-risk-detection.png)
+
+### 🟡 Low-Risk IP Detection
+
+The IP address `142.4.9.200` received a confidence score of **18%** and was classified as **Low-Risk**. The event was recorded in QRadar Log Activity without triggering a security offense.
+
+![Low-Risk IP Detection](screenshots/qradar-low-risk-detection.png)
