@@ -10,12 +10,18 @@ A cybersecurity project that automates IP threat intelligence analysis by integr
 
 ### 📄 Published Research
 
-This project formed the foundation of my published research:
+This project formed the foundation of the following peer-reviewed scientific publication:
 
 **"From Reactive to Proactive: Automating IP Threat Intelligence in SIEM Systems for Cyber Threat Detection"**
 
-Published in the *International Journal of Electrical and Computer Engineering Systems (IJECES)*.
----
+**Authors:** Abeer Alhuzali, Asrar Alshareef  
+**Journal:** International Journal of Electrical and Computer Engineering Systems (IJECES)  
+**Volume:** 17, Issue 2  
+**Pages:** 83–92  
+**Published:** January 2026  
+**DOI:** [10.32985/ijeces.17.2.1](https://doi.org/10.32985/ijeces.17.2.1)
+
+📖 [View the Published Paper](https://ijeces.ferit.hr/index.php/ijeces/article/view/4327)
 
 ## 📌 Project Overview
 
