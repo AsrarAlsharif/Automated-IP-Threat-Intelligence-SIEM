@@ -58,3 +58,36 @@ flowchart TD
     J -->|"High Risk"| K["Security Offense"]
     F -->|"High / Medium"| L["Automated PDF Threat Report"]
 ```
+---
+
+## ⚙️ How It Works
+
+1. **Receive the Suspicious IP**
+   - A Windows-based source sends a Syslog message containing an IP address in the format `CHECK-IP=xxx.xxx.xxx.xxx`.
+   - The message is transmitted via UDP to port `5514`.
+
+2. **Extract the IP Address**
+   - A Python service continuously listens for incoming Syslog messages.
+   - The IP address is automatically extracted using a regular expression.
+
+3. **Query AbuseIPDB**
+   - The extracted IP address is submitted to the AbuseIPDB API.
+   - The API returns reputation data including the abuse confidence score, country, and last reported activity.
+
+4. **Classify the Risk**
+   - **High Risk:** Score ≥ 75
+   - **Medium Risk:** Score 20–74
+   - **Low Risk:** Score < 20
+
+5. **Generate Threat Reports**
+   - High-Risk and Medium-Risk cases automatically generate a PDF threat report.
+   - The report contains the IP address, confidence score, country, last reported activity, analytical notes, and risk-based recommendations.
+
+6. **Forward Enriched Data to QRadar**
+   - The analyzed data is formatted as an RFC 5424-compliant Syslog message.
+   - The enriched event is forwarded to IBM QRadar via UDP port `514`.
+
+7. **Parse and Detect in QRadar**
+   - Custom event properties extract the IP address, confidence score, country, classification, last reported activity, and report path.
+   - A custom correlation rule evaluates the risk classification.
+   - High-Risk events automatically trigger a security offense in QRadar.
