@@ -91,3 +91,17 @@ flowchart TD
    - Custom event properties extract the IP address, confidence score, country, classification, last reported activity, and report path.
    - A custom correlation rule evaluates the risk classification.
    - High-Risk events automatically trigger a security offense in QRadar.
+---
+
+## 🛠️ Technologies & Skills
+
+| Category | Technologies / Skills |
+|---|---|
+| **SIEM & Security Monitoring** | IBM QRadar, Log Activity, Custom Correlation Rules, Offense Management |
+| **Threat Intelligence** | AbuseIPDB, IP Reputation Analysis, Indicators of Compromise (IoCs) |
+| **Programming & Automation** | Python, Regular Expressions (Regex), Automated Threat Analysis |
+| **API Integration** | REST API, JSON Processing, AbuseIPDB API |
+| **Log Management** | Syslog, RFC 5424, Custom DSM, Custom Event Properties |
+| **Networking** | UDP, Syslog Listener (Port 5514), QRadar Syslog Ingestion (Port 514) |
+| **Threat Analysis** | Risk Classification, Threat Enrichment, IP-Based Threat Detection |
+| **Reporting** | Automated PDF Threat Reports, Risk-Based Recommendations |
