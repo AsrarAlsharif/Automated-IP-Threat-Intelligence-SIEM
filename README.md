@@ -160,3 +160,51 @@ Experimental evaluation showed that the automated workflow reduced threat valida
 - **Automated PDF threat reports** for High-Risk and Medium-Risk cases.
 - **Reduced reliance on manual IP investigation** by security analysts.
 - **Real-time escalation of critical threats** through QRadar correlation rules.
+
+---
+
+## ⚙️ Setup & Configuration
+
+### Prerequisites
+
+- Python 3.x
+- IBM QRadar SIEM environment
+- AbuseIPDB API key
+- Network connectivity between the processing service and QRadar
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/AsrarAlsharif/Automated-IP-Threat-Intelligence-SIEM.git
+cd Automated-IP-Threat-Intelligence-SIEM
+```
+
+### 2. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Configure Environment Variables
+
+Use `.env.example` as a reference for the required configuration:
+
+```text
+ABUSEIPDB_API_KEY=your_api_key_here
+QRADAR_IP=your_qradar_ip
+QRADAR_PORT=514
+LISTEN_PORT=5514
+BASE_FOLDER=ThreatReports
+```
+
+> **Security Note:** Never commit your real AbuseIPDB API key or other credentials to the repository.
+
+### 4. Run the Threat Intelligence Processor
+
+Set the required environment variables on your system, then run:
+
+```bash
+python src/threat_intel_processor.py
+```
+
+The service will listen for incoming `CHECK-IP=` Syslog messages, query AbuseIPDB, classify the IP reputation, generate reports when applicable, and forward enriched events to IBM QRadar.
